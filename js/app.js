@@ -59,7 +59,13 @@ Poddly.fetchContent = function(content, attemptedStore){
   }
 
   if(Strobe.isNativeApp){
-
+    $.getJSON('http://gpodder.net/toplist/10.json',{
+      success:function(response){
+        Poddly.buildFromEntries(response);
+        Poddly.store.save("entries",response);
+        console.log("Built from remote");
+      }
+    });
   } else {
     Strobe.ajax('http://gpodder.net/toplist/10.json',{
       success:function(response){
