@@ -58,16 +58,24 @@ Poddly.fetchContent = function(content, attemptedStore){
     return;
   }
 
-  Strobe.ajax( 'http://gpodder.net/toplist/10.json',{
+  $.ajax( 'http://gpodder.net/toplist/10.jsonp',{
+    dataType:'jsonp',
+    jsonp:"jsonp",
     success:function(response){
       Poddly.buildFromEntries(response);
       Poddly.store.save("entries",response);
       console.log("Built from remote");
     },
-    error:function(){
-      $("#container").html("Failed to retrieve records");
+    error: function(xhr, status) {
+      $("<span>Error while loading data: "+status+"</span>").appendTo(document.body);
     }
   });
+}
+
+Poddly.buildFromResponse = function(){
+  Poddly.buildFromEntries(response);
+  Poddly.store.save("entries",response);
+  console.log("Built from remote");
 }
 
 Poddly.buildFromEntries = function(entries){
