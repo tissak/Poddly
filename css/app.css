@@ -1,0 +1,25 @@
+    #entries { }
+    #entries li { width: 900px; border 1px solid #eee; margin: 1px; list-style:none; padding: 3px }
+    #entries li {
+      background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.15, #ccc),
+          color-stop(0.40, #ddd),
+          color-stop(0.80, #eee)
+      );
+      background-image: -moz-linear-gradient(
+          center bottom,
+          rgb(209,209,209) 15%,
+          rgb(209,209,209) 50%,
+          rgb(227,227,227) 60%
+      );
+            
+    }
+    #entries .wrapper { display: inline-block; width:600px; vertical-align: top; padding-top: 5px }
+    #entries .title { font-weight:bold;}
+    #entries .logo { margin: 0 5px; border: 1px solid #aaa; height: 100px; width: 100px }
+    #entries .spacer {margin: 0 5px; border 1px solid #aaa; background-color: #eee; width: 100px; height: 100px; display: inline-block}
+    #entries .subscribers { color: #999; font-size: 0.8em }
+
