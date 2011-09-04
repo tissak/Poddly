@@ -75,7 +75,7 @@ Poddly.fetchContent = function(content, attemptedStore){
       },
       error:function(error){
         console.log(arguments);
-        $("#container").html("Failed to retrieve records");
+        $("#message").html("Failed to retrieve records");
       }
     });
   }
