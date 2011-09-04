@@ -10,11 +10,9 @@ Poddly.PodcastModel = SC.Object.extend({
   url: null,
   website: null,
   subscribers: null
-})
-
-Poddly.podcastsController = SC.ArrayProxy.create({
-  content: []
 });
+
+Poddly.podcastsController = SC.ArrayProxy.create({content:[]});
 
 
 Poddly.PodcastView = SC.View.extend({
@@ -59,8 +57,11 @@ Poddly.fetchContent = function(content, attemptedStore){
   }
 
   if(Strobe.isNativeApp){
-    $.getJSON('http://gpodder.net/toplist/10.json',{
+    $.ajax('http://gpodder.net/toplist/10.jsonp',{
+      dataType:"jsonp",
+      jsonp:"jsonp",
       success:function(response){
+        console.log(arguments)
         Poddly.buildFromEntries(response);
         Poddly.store.save("entries",response);
         console.log("Built from remote");
