@@ -90,5 +90,5 @@ Poddly.buildFromEntries = function(entries){
 
 // grab the content
 $(document).ready(function(){
-  Poddly.fetchContent();
+  window.setTimeout(Poddly.fetchContent, 1000);
 });
