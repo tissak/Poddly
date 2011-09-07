@@ -17,7 +17,7 @@
     @property {Boolean}
     @default false
   */
-  Strobe.isNativeApp = window.device && window.device.uuid !== undefined;
+  Strobe.isNativeApp = true;
 
   /**
     Adds Strobe proxy prefix to a given path.

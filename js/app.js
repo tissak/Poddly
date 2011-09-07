@@ -43,20 +43,20 @@ Poddly.store = {
 
 Poddly.fetchContent = function(content, attemptedStore){
 
-  if(attemptedStore == null){
-    Poddly.store.get("entries", function(content){
-      Poddly.fetchContent(content, true);
-      console.log("fetched from cache: ",content);
-    });
-  }
+  // if(attemptedStore == null){
+  //   Poddly.store.get("entries", function(content){
+  //     Poddly.fetchContent(content, true);
+  //     console.log("fetched from cache: ",content);
+  //   });
+  // }
 
-  if(content != null){
-    Poddly.buildFromEntries(content);
-    console.log("Built from cache");
-    return;
-  }
+  // if(content != null){
+  //   Poddly.buildFromEntries(content);
+  //   console.log("Built from cache");
+  //   return;
+  // }
 
-  if(Strobe.isNativeApp){
+  // if(Strobe.isNativeApp){
     $.ajax('http://gpodder.net/toplist/10.jsonp',{
       dataType:"jsonp",
       jsonp:"jsonp",
@@ -67,19 +67,19 @@ Poddly.fetchContent = function(content, attemptedStore){
         console.log("Built from remote");
       }
     });
-  } else {
-    Strobe.ajax('http://gpodder.net/toplist/10.json',{
-      success:function(response){
-        Poddly.buildFromEntries(response);
-        Poddly.store.save("entries",response);
-        console.log("Built from remote");
-      },
-      error:function(error){
-        console.log(arguments);
-        $("#message").html("Failed to retrieve records");
-      }
-    });
-  }
+//   } else {
+//     Strobe.ajax('http://gpodder.net/toplist/10.json',{
+//       success:function(response){
+//         Poddly.buildFromEntries(response);
+//         Poddly.store.save("entries",response);
+//         console.log("Built from remote");
+//       },
+//       error:function(error){
+//         console.log(arguments);
+//         $("#message").html("Failed to retrieve records");
+//       }
+//     });
+//   }
 }
 
 Poddly.buildFromEntries = function(entries){
